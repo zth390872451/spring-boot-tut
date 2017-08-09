@@ -1,0 +1,46 @@
+# spring.profiles.active: dev #开启开发环境  # 配置在 parent pom文件中
+---
+spring:
+  application:
+    name: babywei-pay
+  datasource:
+    url: jdbc:mysql://192.168.2.35/zth_test
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    openInView: true
+    show_sql: true
+    generate-ddl: true #(false)
+    hibernate:
+        ddl-auto: update #(none)
+server:
+  context-path: /umeox  #then access  http://localhost:8080/api
+  port: 8080
+
+# JWT
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      register: "login/register"
+
+# Logging configuration
+logging:
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG
+
+
+#  datasource:
+##    dataSourceClassName: com.mysql.jdbc.Driver #(com.mysql.jdbc.jdbc2.optional.MysqlDataSource)
+#    url: jdbc:mysql://192.168.2.35/zth_test
+#    username: root
+#    password: root
